@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>组件的基本使用</title>
+    <title>App组件规范使用</title>
     <script src="https://unpkg.com/vue@3.5.42/dist/vue.global.js"></script>
     <style>
         .school{
-            background-color: aquamarine;
+            background-color: gold;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 5px black;
@@ -25,25 +25,21 @@
     <div id="demo">
 
     </div>
-
     <script>
-        // 定义一个School组件
-        const School = {
-            name:"xuexiao", // 用于在浏览器vue插件中查看名字
+        const Tang = {
             template:`
                 <div class="school">
                     <h2>欢迎来到 [{{name}}] ! 地址是:[{{address}}]</h2>
                 </div>
             `,
             setup(){
-                let name = "闽江大学"
-                let address = "闽侯大学城"
+                let name = "糖巢"
+                let address = "交通路"
                 return {name,address}
             }
         }
 
-        // 定义一个Ren组件
-        const Ren = {
+        const Zhao = {
             template:`
                 <div class="ren">
                     <h2>我叫 [{{name}}] , 来自:[{{address}}] </h2>
@@ -56,22 +52,16 @@
             }
 
         }
-
-
-        // 应用实例对象
-        const app = Vue.createApp({
-            components:{
-                School,Ren
-            },
+        const App = {
+            components:{Tang,Zhao},
             template:`
-                <School/>
+                <Tang/>
                 <hr>
-                <Ren/>
-            `,
+                <Zhao/>
+            `
+        }
+        Vue.createApp(App).mount("#demo")
 
-
-        })
-        app.mount("#demo")
     </script>
 </body>
 </html>
