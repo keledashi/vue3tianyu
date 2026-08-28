@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件的理解</title>
+    <script src="https://unpkg.com/vue@3.5.42/dist/vue.global.js"></script>
+    <style>
+        .school{
+            background-color: aquamarine;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px;
+        }
+        .ren{
+            background-color:gold;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div class="school">
+            <h2>欢迎来到 {{school.name}} ! 地址是:{{school.address}}</h2>
+        </div>
+        <hr>
+        <div class="ren">
+            <h2>我叫 {{ren.name}} , 来自:{{ren.address}} </h2>
+        </div>
+    </div>
+
+
+
+    <script>
+        // 1.解构vue对象获取createApp函数
+        const {createApp} = Vue
+
+        // 2.使用createApp函数传入数据
+        const app = createApp({
+            setup(){
+                let school = {
+                    name:"闽江学院附中",
+                    address:"王庄大树兜"
+                }
+                let ren = {
+                    name:"赵一鸣",
+                    address:"福州"
+                }
+                return {school,ren}
+            }
+        })
+
+        // 3.挂载页面容器
+        app.mount("#demo")
+    </script>
+</body>
+</html>
