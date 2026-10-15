@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+    <script src="https://unpkg.com/vue@3.5.42/dist/vue.global.js"></script>
+    <style>
+        #demo{
+            font-family: 'consolas';
+        }
+    </style>
+</head>
+<body>
+    <div id="demo"></div>
+
+    <script>
+        const App = {
+            components:{},
+            template:`
+               <h2>{{hello}}</h2>
+               <h2>{{comp_hello}}</h2>
+               <button @click='he'>hello world</button>
+            `,
+            setup(){
+                const hello = Vue.ref("HELLO")
+
+                // 创建一个计算属性
+                const comp_hello = Vue.computed(()=>{
+                    return hello.value.split('').reverse().join('')
+                })
+                
+                const he = function(){
+                    hello.value = hello.value=='HELLO'?"WORLD":"HELLO"
+                }
+                return {hello,comp_hello,he}
+            }
+        }
+        const app = Vue.createApp(App)
+        app.mount("#demo")
+    </script>
+</body>
+</html>
